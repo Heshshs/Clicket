@@ -6,15 +6,29 @@
 <title>Clicket - Profile</title>
 
 <style>
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* BODY */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #e5e7eb;
+    display: flex;
+    justify-content: center;
+}
+
+/* APP CONTAINER */
+.app-container {
+    width: 100%;
+    max-width: 428px;
+    min-height: 100vh;
     background: white;
+    display: flex;
+    flex-direction: column;
 }
 
 /* HEADER */
@@ -22,12 +36,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 24px;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+    min-height: 60px; /* ensures icon has space */
 }
 
+/* LOGO */
 .logo {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-family: cursive;
     font-weight: bold;
     background: linear-gradient(to right, #a855f7, #fb923c);
@@ -35,36 +51,41 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* SETTINGS ICON */
+/* SETTINGS ICON BUTTON */
 .settings-btn {
     background: none;
     border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
 
 .settings-btn svg {
-    width: 24px;
-    height: 24px;
+    width: 28px;   /* larger for full visibility */
+    height: 28px;
     stroke: black;
     fill: none;
     stroke-width: 2;
 }
 
-/* PROFILE */
+/* PROFILE SECTION */
 .profile-section {
+    flex: 1;
     text-align: center;
-    padding: 32px 24px 100px;
+    padding: 30px 20px 100px;
 }
 
 .profile-pic {
-    width: 96px;
-    height: 96px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
 }
 
 .display-name {
-    font-weight: 600;
     margin-top: 10px;
+    font-weight: 600;
 }
 
 .username {
@@ -72,6 +93,7 @@ body {
     font-size: 14px;
 }
 
+/* STATS */
 .stats {
     display: flex;
     justify-content: center;
@@ -83,6 +105,7 @@ body {
     font-weight: bold;
 }
 
+/* BUTTON */
 .edit-profile-btn {
     padding: 8px 20px;
     border-radius: 20px;
@@ -91,7 +114,7 @@ body {
     cursor: pointer;
 }
 
-/* POSTS */
+/* POSTS GRID */
 .posts-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -104,70 +127,137 @@ body {
     border-radius: 8px;
 }
 
-/* NAV */
+/* NAV BAR */
 .bottom-nav {
     position: fixed;
     bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
     max-width: 428px;
     background: black;
+    padding: 14px 20px;
     display: flex;
     justify-content: space-around;
-    padding: 15px;
+    align-items: center;
+}
+
+/* NAV BUTTON */
+.nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    position: relative;
 }
 
 .nav-btn svg {
     width: 26px;
+    height: 26px;
     stroke: white;
     fill: none;
+    stroke-width: 2;
+}
+
+.nav-btn.active::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 4px;
+    background: linear-gradient(to right, #a855f7, #fb923c);
+    border-radius: 0 0 4px 4px;
+}
+
+.settings-img {
+    width: 28px;   /* adjust as needed */
+    height: 28px;
+    object-fit: contain;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-    <div class="logo">Clicket</div>
+<div class="app-container">
 
-    <!-- SETTINGS ICON -->
-    <button class="settings-btn" onclick="window.location.href='settings.html'">
-        <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 
-            2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 
-            0 0 0-1.82-.33 1.65 1.65 
-            0 0 0-1 1.51V21a2 2 0 
-            1 1-4 0v-.09a1.65 1.65 
-            0 0 0-1-1.51 1.65 1.65 
-            0 0 0-1.82.33l-.06.06a2 
-            2 0 1 1-2.83-2.83l.06-.06a1.65 
-            1.65 0 0 0 .33-1.82"></path>
-        </svg>
-    </button>
-</div>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">Clicket</div>
 
-<div class="profile-section">
-    <img src="https://heshshs.github.io/Clicket/deshprofile.jpg" class="profile-pic">
-
-    <h2 class="display-name">desh</h2>
-    <p class="username">@heshesh12</p>
-
-    <div class="stats">
-        <div><div class="stat-value">10</div>Following</div>
-        <div><div class="stat-value">6767</div>Followers</div>
-        <div><div class="stat-value">3</div>Posts</div>
+        <!-- SETTINGS -->
+        <button class="settings-btn" onclick="window.location.href='settings.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/126/126472.png" alt="Settings" class="settings-img">
+</button>
     </div>
 
-    <button class="edit-profile-btn" onclick="location.href='edit-profile.html'">
-        Edit Profile
-    </button>
+    <!-- PROFILE SECTION -->
+    <div class="profile-section">
+        <img src="https://heshshs.github.io/Clicket/deshprofile.jpg" class="profile-pic">
 
-    <div class="posts-grid">
-        <img src="https://heshshs.github.io/Clicket/1444e83054f150c7f0a04441574d2a75.jpg" class="post-thumbnail">
-        <img src="https://heshshs.github.io/Clicket/67833d1bc407cb2a8c1d9ea29d6fa9cb.jpg" class="post-thumbnail">
-        <img src="https://heshshs.github.io/Clicket/9951e7300e4e445cddfa363f807362ef (1).jpg" class="post-thumbnail">
+        <h2 class="display-name">desh</h2>
+        <p class="username">@heshesh12</p>
+
+        <div class="stats">
+            <div><div class="stat-value">10</div>Following</div>
+            <div><div class="stat-value">6767</div>Followers</div>
+            <div><div class="stat-value">3</div>Posts</div>
+        </div>
+
+        <button class="edit-profile-btn" onclick="location.href='edit-profile.html'">
+            Edit Profile
+        </button>
+
+        <div class="posts-grid">
+            <img src="https://heshshs.github.io/Clicket/1444e83054f150c7f0a04441574d2a75.jpg" class="post-thumbnail">
+            <img src="https://heshshs.github.io/Clicket/67833d1bc407cb2a8c1d9ea29d6fa9cb.jpg" class="post-thumbnail">
+            <img src="https://heshshs.github.io/Clicket/9951e7300e4e445cddfa363f807362ef%20(1).jpg" class="post-thumbnail">
+        </div>
     </div>
+
+    <!-- BOTTOM NAV -->
+    <div class="bottom-nav">
+        <button class="nav-btn" onclick="window.location.href='home.html'">
+            <svg viewBox="0 0 24 24">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </button>
+
+        <button class="nav-btn" onclick="window.location.href='search.html'">
+            <svg viewBox="0 0 24 24">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <line x1="19" y1="8" x2="19" y2="14"></line>
+                <line x1="22" y1="11" x2="16" y2="11"></line>
+            </svg>
+        </button>
+
+        <button class="nav-btn" onclick="window.location.href='messages.html'">
+            <svg viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+        </button>
+
+        <button class="nav-btn active" onclick="window.location.href='profile.html'">
+            <svg viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </button>
+    </div>
+
 </div>
+
+<script>
+// Redirect if not logged in
+if (!localStorage.getItem('isLoggedIn')) {
+    window.location.href = 'index.html';
+}
+</script>
 
 </body>
 </html>

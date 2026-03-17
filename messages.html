@@ -155,6 +155,26 @@
             flex-shrink: 0;
         }
 
+        /* --- STREAK RIGHT --- */
+        .streak-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+
+        .streak-right .flame {
+            width: 20px;
+            height: 20px;
+        }
+
+        .streak-right .streak-number {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #fb923c; /* orange color */
+        }
+
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -218,6 +238,7 @@
 
         <!-- Messages List -->
         <div class="messages-list">
+            <!-- Message 1 -->
             <div class="message-item">
                 <img src="https://heshshs.github.io/Clicket/pusanijb.png" alt="User" class="avatar">
                 <div class="message-content">
@@ -227,9 +248,13 @@
                     </div>
                     <div class="message-preview unread">San ka na????</div>
                 </div>
-                <div class="unread-badge"></div>
+                <div class="streak-right">
+                    <img src="https://images.emojiterra.com/google/android-11/512px/1f525.png" alt="flame" class="flame">
+                    <span class="streak-number">6</span>
+                </div>
             </div>
 
+            <!-- Message 2 -->
             <div class="message-item">
                 <img src="https://heshshs.github.io/Clicket/bd6f404dfb47b7d4c4312b7da9ad13ba.jpg" alt="User" class="avatar">
                 <div class="message-content">
@@ -239,8 +264,13 @@
                     </div>
                     <div class="message-preview">ayos tayo</div>
                 </div>
+                <div class="streak-right">
+                    <img src="https://images.emojiterra.com/google/android-11/512px/1f525.png" alt="flame" class="flame">
+                    <span class="streak-number">27</span>
+                </div>
             </div>
 
+            <!-- Message 3 -->
             <div class="message-item">
                 <img src="https://heshshs.github.io/Clicket/b9b76e99426abcde32fa89beab7d0e73.jpg" alt="User" class="avatar">
                 <div class="message-content">
@@ -251,9 +281,6 @@
                     <div class="message-preview">Libre kita pizza</div>
                 </div>
             </div>
-
-
-            
         </div>
 
         <!-- Bottom Navigation -->
